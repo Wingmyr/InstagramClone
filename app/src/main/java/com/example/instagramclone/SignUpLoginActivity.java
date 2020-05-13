@@ -1,5 +1,6 @@
 package com.example.instagramclone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -52,6 +53,9 @@ public class SignUpLoginActivity extends AppCompatActivity {
                                 FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
                         //Toast.makeText(SignUp.this, kickBoxer.get("name") +
                         //        " object saved ok", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignUpLoginActivity.this,
+                                WelcomeActivity.class);
+                        startActivity(intent);
                     } else {
                         FancyToast.makeText(SignUpLoginActivity.this, e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
                         //Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -72,6 +76,9 @@ public class SignUpLoginActivity extends AppCompatActivity {
                                 FancyToast.makeText(SignUpLoginActivity.this,
                                         user.get("username") + " is logged in succesfully",
                                         FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                                Intent intent = new Intent(SignUpLoginActivity.this,
+                                        WelcomeActivity.class);
+                                startActivity(intent);
                             } else {
                                 FancyToast.makeText(SignUpLoginActivity.this,
                                         e.getMessage(), FancyToast.LENGTH_LONG,
@@ -85,5 +92,14 @@ public class SignUpLoginActivity extends AppCompatActivity {
         }
     });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        edtUserNameSignUp.setText("");
+        edtPasswordSignUp.setText("");
+        edtUserNameLogin.setText("");
+        edtPasswordLogin.setText("");
     }
 }
